@@ -4,7 +4,7 @@ import ProjectDescriptionHelpers
 /*
                 +-------------+
                 |             |
-                |     App     | Contains App target and unit-test target
+                |     App     | Contains Template App target and Template unit-test target
                 |             |
          +------+-------------+-------+
          |         depends on         |

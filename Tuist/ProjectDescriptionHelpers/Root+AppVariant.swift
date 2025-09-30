@@ -52,16 +52,48 @@ extension Project.Root.AppVariant {
             scripts: [],
             dependencies: [
                 .project(
-                    target: Project.Framework.InterfaceAdapters.rawValue,
-                    path: Project.Framework.InterfaceAdapters.getPath()
+                    target: Project.Framework.TemplateEnterprise.rawValue,
+                    path: Project.Framework.TemplateEnterprise.getPath()
                 ),
                 .project(
-                    target: Project.Framework.ApplicationBusinessRules.rawValue,
-                    path: Project.Framework.ApplicationBusinessRules.getPath()
+                    target: Project.Framework.TemplateApplication.rawValue,
+                    path: Project.Framework.TemplateApplication.getPath()
                 ),
                 .project(
-                    target: Project.Framework.Localization.rawValue,
-                    path: Project.Framework.Localization.getPath()
+                    target: Project.Framework.TemplatePersistance.rawValue,
+                    path: Project.Framework.TemplatePersistance.getPath()
+                ),
+                .project(
+                    target: Project.Framework.TemplateData.rawValue,
+                    path: Project.Framework.TemplateData.getPath()
+                ),
+                .project(
+                    target: Project.Framework.TemplateNetwork.rawValue,
+                    path: Project.Framework.TemplateNetwork.getPath()
+                ),
+                .project(
+                    target: Project.Framework.TemplateDesignSystem.rawValue,
+                    path: Project.Framework.TemplateDesignSystem.getPath()
+                ),
+                .project(
+                    target: Project.Framework.TemplateLocalization.rawValue,
+                    path: Project.Framework.TemplateLocalization.getPath()
+                ),
+                .project(
+                    target: Project.Framework.TemplateOverview.rawValue,
+                    path: Project.Framework.TemplateOverview.getPath()
+                ),
+                .project(
+                    target: Project.Framework.TemplateLogin.rawValue,
+                    path: Project.Framework.TemplateLogin.getPath()
+                ),
+                .project(
+                    target: Project.Framework.TemplateContacts.rawValue,
+                    path: Project.Framework.TemplateContacts.getPath()
+                ),
+                .project(
+                    target: Project.Framework.TemplateUtils.rawValue,
+                    path: Project.Framework.TemplateUtils.getPath()
                 ),
                 .external(name: Project.Dependencies.SwiftyUserDefaults.rawValue),
                 .external(name: Project.Dependencies.SnapKit.rawValue),
@@ -70,7 +102,7 @@ extension Project.Root.AppVariant {
                 .external(name: Project.Dependencies.DevToolsUI.rawValue),
                 .external(name: Project.Dependencies.DevToolsNavigation.rawValue),
                 .external(name: Project.Dependencies.DevToolsNetworking.rawValue),
-                .external(name: Project.Dependencies.DevToolsCoreData.rawValue),
+                .external(name: Project.Dependencies.DevToolsPersistance.rawValue),
                 .external(name: Project.Dependencies.DevToolsLocalization.rawValue)
             ],
             settings: .settings(configurations: [
@@ -81,8 +113,7 @@ extension Project.Root.AppVariant {
                 .release(name: .release, settings: Project.makeSettingsDictionary(
                     identity: "iPhone Developer", provisioningPorfileSpecifier: "", variant: self)
                 )
-            ]),
-            coreDataModels: [.coreDataModel("App/Resources/Database/CoreDataDB.xcdatamodeld")]
+            ])
         )
     }
 }

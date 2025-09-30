@@ -31,10 +31,10 @@ extension Project.Root {
     public var appVariants: [AppVariant] {
         [
             AppVariant(
-                name: "AppName LV",
-                productName: "AppName",
-                displayName: "AppName Latvija",
-                bundleID: "baltic.AppName.prod",
+                name: "Template LV",
+                productName: "Template",
+                displayName: "Template Latvija",
+                bundleID: "baltic.Template.mob.lv.prod",
                 configsSubdirectoryName: "",
                 resourcesSubdirectoryName: "",
                 teamID: "9FVL8NV4N7",
@@ -46,10 +46,10 @@ extension Project.Root {
                 appURLScheme: nil
             ),
             AppVariant(
-                name: "AppName LV Dev",
-                productName: "AppName",
-                displayName: "AppName Latvija Dev",
-                bundleID: "baltic.AppName.dev",
+                name: "Template LV Dev",
+                productName: "Template",
+                displayName: "Template Latvija Dev",
+                bundleID: "baltic.Template.mob.lv.dev",
                 configsSubdirectoryName: "",
                 resourcesSubdirectoryName: "",
                 teamID: "9FVL8NV4N7",

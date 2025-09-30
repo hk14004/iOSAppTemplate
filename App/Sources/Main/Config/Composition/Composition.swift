@@ -1,9 +1,9 @@
 //
 //  Composition.swift
-//  AppName
+//  Swedbank
 //
 //  Created by Hardijs Ķirsis on 03/07/2023.
-//  Copyright © 2023 AppName. All rights reserved.
+//  Copyright © 2023 SWEDBANK AB. All rights reserved.
 //
 
 import Swinject
@@ -18,10 +18,10 @@ class Composition {
     private init() {
         assembler = Assembler(
             [
+                LocalizationAssembly(),
                 StorageAssembly(),
                 NetworkClientAssembly(),
                 ServicesAssembly(),
-                UserSessionAssembly(),
                 RepositoryAssembly(),
                 UseCaseAssembly(),
                 ScreenFactoryAssembly()

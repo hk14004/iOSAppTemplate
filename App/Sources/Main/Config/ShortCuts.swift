@@ -1,6 +1,10 @@
 import DevToolsLocalization
-import Localization
+import TemplateLocalization
+import TemplateDesignSystem
 
-typealias AppColors = AppNameAsset.Colors
-typealias AppImages = AppNameAsset.Images
-typealias AppStrings = Localization
+typealias AppColors = TemplateDesignSystemAsset.Colors
+typealias AppImages = TemplateDesignSystemAsset.Images
+typealias AppStrings = TemplateLocalization
+typealias AppLocalization = RuntimeLocalization
+typealias AppLocalizationObserver = RuntimeLocalizationObserver
+typealias AppLocalizedPreview = RuntimeLocalizedPreview

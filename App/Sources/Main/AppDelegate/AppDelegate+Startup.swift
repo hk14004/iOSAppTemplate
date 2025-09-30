@@ -1,12 +1,13 @@
 //
 //  AppDelegate+Startup.swift
-//  AppName
+//  Swedbank
 //
 //  Created by Hardijs Ķirsis on 02/09/2023.
-//  Copyright © 2023 AppName. All rights reserved.
+//  Copyright © 2023 SWEDBANK AB. All rights reserved.
 //
 
 import UIKit
+import TemplateDesignSystem
 
 extension AppDelegate {
     func startup() {
@@ -18,13 +19,12 @@ extension AppDelegate {
 
 fileprivate extension AppDelegate {
     func routeToPreview() {
-        fatalError()
-//        let screenFactory = DefaultPreviewScreenFactory()
-//        let vc = screenFactory.make()
-//        let nav = UINavigationController(rootViewController: vc)
-//        nav.navigationBar.isHidden = true
-//        let rootWindow: UIWindow = Composition.resolve()
-//        rootWindow.rootViewController = nav
-//        rootWindow.makeKeyAndVisible()
+        let screenFactory = DefaultPreviewScreenFactory()
+        let vc = screenFactory.make()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.navigationBar.isHidden = true
+        let rootWindow: UIWindow = Composition.resolve()
+        rootWindow.rootViewController = nav
+        rootWindow.makeKeyAndVisible()
     }
 }

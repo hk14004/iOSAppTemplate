@@ -1,21 +1,54 @@
 import Foundation
-import DevToolsCoreData
+import DevToolsPersistance
 import Swinject
 import DevToolsCore
-import ApplicationBusinessRules
+import TemplateApplication
+import TemplateData
+import TemplatePersistance
 
 class RepositoryAssembly: Assembly {
     func assemble(container: Container) {
+        container.register(UserJourneyRepository.self) { resolver in
+            DefaultUserJourneyRepository()
+        }
+        .inObjectScope(.container)
         container.register(ApplicationActivityRepository.self) { resolver in
             DefaultApplicationActivityRepository()
+        }
+        .inObjectScope(.container)
+        container.register(UserSessionCredentialsRepository.self) { resolver in
+            DefaultUserSessionCredentialsRepository(store: Composition.resolve())
+        }
+        .inObjectScope(.container)
+        container.register(LanguageRepository.self) { resolver in
+            DefaultLanguageRepository(
+                appLocalization: Composition.resolve()
+            )
         }
         .inObjectScope(.container)
         container.register(CustomerRepository.self) { resolver in
             DefaultCustomerRepository(
                 fetchRemoteCustomersService: Composition.resolve(),
-                localStore: resolver.resolve(PersistentCoreDataStore<CustomerDTO>.self)!
+                localStore: resolver.resolve((any CustomerPersistedLayerInterface).self)!,
+                currentCustomerStore: Composition.resolve(),
+                lastUsedCustomerStore: Composition.resolve()
+            )
+        }
+        .inObjectScope(.container)
+        container.register(OfferRepository.self) { resolver in
+            DefaultOfferRepository(
+                store: resolver.resolve((any OfferPersistedLayerInterface).self)!,
+                fetchRemoteOffersService: Composition.resolve()
+            )
+        }
+        .inObjectScope(.container)
+        container.register(AccountRepository.self) { resolver in
+            DefaultAccountRepository(
+                store: resolver.resolve((any AccountPersistedLayerInterface).self)!,
+                fetchRemoteAccountsService: Composition.resolve()
             )
         }
         .inObjectScope(.container)
     }
 }
+

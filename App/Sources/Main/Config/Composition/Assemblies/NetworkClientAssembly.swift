@@ -2,10 +2,15 @@ import Foundation
 import Swinject
 import DevToolsCore
 import DevToolsNetworking
-import ApplicationBusinessRules
+import TemplateApplication
+import TemplateNetwork
 
 class NetworkClientAssembly: Assembly {
     func assemble(container: Container) {
+        container.register(NetworkReachability.self) { resolver in
+            DefaultNetworkReachability()
+        }
+        .inObjectScope(.container)
         container.register(DevNetworkRequestFactory.self) { resolver in
             DefaultNetworkRequestFactory()
         }
@@ -14,10 +19,21 @@ class NetworkClientAssembly: Assembly {
             DefaultNetworkDataProvider()
         }
         .inObjectScope(.container)
-        container.register(AppsNetworkClient.self) { resolver in
-            AppsNetworkClient(
-                dataProvider: resolver.resolve(DevNetworkDataProvider.self)!,
-                requestFactory: resolver.resolve(DevNetworkRequestFactory.self)!
+        container.register(NetworkClientSessionExpiredPlugin.self) { resolver in
+            DefaultNetworkClientSessionExpiredPlugin(logoutUseCase: Composition.resolve())
+        }
+        .inObjectScope(.container)
+        container.register((any NetworkClientCredentialsPlugin).self) { resolver in
+            DefaultNetworkClientCredentialsPlugin(credentialsStore: Composition.resolve())
+        }
+        .inObjectScope(.container)
+        container.register(SwedNetworkClient.self) { resolver in
+            SwedNetworkClient(
+                dataProvider: Composition.resolve(),
+                requestFactory: Composition.resolve(),
+                reachabilityNotifier: Composition.resolve(),
+                credentialsPlugin: { Composition.resolve() },
+                sessionExpiredPlugin: { Composition.resolve() }
             )
         }
         .inObjectScope(.container)

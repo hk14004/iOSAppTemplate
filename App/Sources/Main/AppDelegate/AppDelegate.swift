@@ -1,12 +1,12 @@
 //
 //  AppDelegate.swift
-//  AppName-Clone
+//  Swedbank-Clone
 //
 //  Created by Hardijs Ķirsis on 17/05/2023.
 //
 
 import UIKit
-import ApplicationBusinessRules
+import TemplateApplication
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Properties

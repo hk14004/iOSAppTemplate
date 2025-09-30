@@ -10,8 +10,9 @@ import ProjectDescription
 extension Project {
     public struct Root {
         nonisolated(unsafe) public static let shared: Root = Root()
-        public static let name = "AppName"
-        public static let orgName = "SIA AppName"
-        public static let targetVersion = "18.0"
+        public static let name = "TemplateApp"
+        public static let orgName = "Template"
+        public static let targetVersion = "17.0"
+        public static let bundleIdPrefix = "baltic.Template.mob"
     }
 }
