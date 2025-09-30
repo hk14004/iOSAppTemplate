@@ -3,9 +3,7 @@ import TemplateApplication
 import DevToolsNavigation
 import UIKit
 import SwiftUI
-import TemplateOverview
 import TemplateLogin
-import TemplateContacts
 
 class ScreenFactoryAssembly: Assembly {
     func assemble(container: Container) {
@@ -25,43 +23,6 @@ class ScreenFactoryAssembly: Assembly {
                 getLastCustomerUseCase: Composition.resolve(),
                 biometryAuthenticateUseCase: Composition.resolve())
             )
-        }
-        // MARK: Root tabbar
-        container.register(RootTabbarScreenFactory.self) { resolver in
-            DefaultRootTabbarScreenFactory()
-        }
-        // MARK: Dashboard
-        container.register((any OverviewScreenFactory).self) { resolver in
-            DefaultDashboardScreenFactory(
-                di: Dependencies(
-                    getRemoteOffersUseCase: Composition.resolve(),
-                    trackCachedOffersUseCase: Composition.resolve(),
-                    getRemoteAccountsUseCase: Composition.resolve(),
-                    trackCachedAccountsUseCase: Composition.resolve(),
-                    offerDetailsScreenFactory: Composition.resolve(),
-                    logoutUseCase: Composition.resolve()
-                )
-            )
-        }
-        // MARK: Language selection
-        container.register(LanguageSelectionScreenFactory.self) { resolver in
-            DefaultLanguageSelectionScreenFactory()
-        }
-        container.register((any ProfileScreenFactory).self) { resolver in
-            DefaultProfileScreenFactory(di: Dependencies(
-                getRemoteOffersUseCase: Composition.resolve(),
-                trackCachedOffersUseCase: Composition.resolve(),
-                getRemoteAccountsUseCase: Composition.resolve(),
-                trackCachedAccountsUseCase: Composition.resolve(),
-                offerDetailsScreenFactory: Composition.resolve(),
-                logoutUseCase: Composition.resolve()
-            ))
-        }
-        container.register(ContactsScreenFactory.self) { resolver in
-            DefaultContactsScreenFactory()
-        }
-        container.register((any OfferDetailsScreenFactory).self) { resolver in
-            DefaultOfferDetailsScreenFactory()
         }
         container.register((any SimpleLoginScreenFactory).self) { resolver in
             DefaultSimpleLoginScreenFactory(di: Dependencies(

@@ -49,7 +49,8 @@ public extension DefaultSplashVM {
             )
             return
         }
-        router?.initRouteToRoot(customer: customer)
+        print(customer)
+        //router?.initRouteToRoot(customer: customer)
     }
 }
 
@@ -66,7 +67,8 @@ public extension DefaultSplashVM {
                 else {
                     return
                 }
-                router?.initRouteToRoot(customer: customer)
+                print(customer)
+                //router?.initRouteToRoot(customer: customer)
             }
             .store(in: &cancelBag)
         return publisher

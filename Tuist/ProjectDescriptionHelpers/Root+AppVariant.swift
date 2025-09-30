@@ -80,16 +80,8 @@ extension Project.Root.AppVariant {
                     path: Project.Framework.TemplateLocalization.getPath()
                 ),
                 .project(
-                    target: Project.Framework.TemplateOverview.rawValue,
-                    path: Project.Framework.TemplateOverview.getPath()
-                ),
-                .project(
                     target: Project.Framework.TemplateLogin.rawValue,
                     path: Project.Framework.TemplateLogin.getPath()
-                ),
-                .project(
-                    target: Project.Framework.TemplateContacts.rawValue,
-                    path: Project.Framework.TemplateContacts.getPath()
                 ),
                 .project(
                     target: Project.Framework.TemplateUtils.rawValue,

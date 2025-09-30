@@ -18,7 +18,7 @@ extension SplashScreenView {
         
         // MARK: Views
         private lazy var logoView = {
-           let view = UIImageView(image: AppImages.swedbankLogo.image)
+           let view = UIImageView(image: AppImages.logo.image)
             view.contentMode = .scaleAspectFit
             return view
         }()

@@ -19,16 +19,14 @@ public extension Project {
         case TemplatePersistance
         case TemplateUtils
         // Features
-        case TemplateOverview
         case TemplateLogin
-        case TemplateContacts
     }
 }
 
 public extension Project.Framework {
     func getPath() -> Path {
         switch self {
-        case .TemplateOverview, .TemplateLogin, .TemplateContacts:
+        case .TemplateLogin:
             "\(Project.frameworkDir + "/" + "Features" + "/" + rawValue)"
         default:
             "\(Project.frameworkDir + "/" + rawValue)"

@@ -11,7 +11,7 @@ import TemplateApplication
 import DevToolsNavigation
 import TemplateLogin
 
-public protocol SplashScreenRouter: ToRootTabbarScreenRouting, ToErrorRouting, ToSimpleLoginScreenRouting {
+public protocol SplashScreenRouter: ToErrorRouting, ToSimpleLoginScreenRouting {
     func routeToOnboarding()
 }
 
