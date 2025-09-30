@@ -51,8 +51,6 @@ class UseCaseAssembly: Assembly {
         container.register(NukeCustomerPersistedDataUseCase.self) { resolver in
             DefaultNukeCustomerPersistedDataUseCase(
                 customerRepository: Composition.resolve(),
-                offerRepository: Composition.resolve(),
-                accountRepository: Composition.resolve(),
                 userSessionCredentialsRepository: Composition.resolve()
             )
         }
@@ -61,22 +59,6 @@ class UseCaseAssembly: Assembly {
                 customerRepository: Composition.resolve(),
                 nukeCustomerPersistedDataUseCase: Composition.resolve()
             )
-        }
-        container.register(GetRemoteOffersUseCase.self) { resolver in
-            DefaultLoadLatestOffersUseCase(
-                offerRepository: Composition.resolve()
-            )
-        }
-        container.register(TrackCachedOffersUseCase.self) { resolver in
-            DefaultTrackCachedOffersUseCase(
-                offerRepository: Composition.resolve()
-            )
-        }
-        container.register(GetRemoteAccountsUseCase.self) { resolver in
-            DefaultGetRemoteAccountsUseCase(accountRepository: Composition.resolve())
-        }
-        container.register(TrackCachedAccountsUseCase.self) { resolver in
-            DefaultTrackCachedAccountsUseCase(accountRepository: Composition.resolve())
         }
         container.register(SimpleLoginUseCase.self) { resolver in
             DefaultSimpleLoginUseCase(

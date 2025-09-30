@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import TemplateDesignSystem
 
 class PrimaryTextField: UITextField {
     

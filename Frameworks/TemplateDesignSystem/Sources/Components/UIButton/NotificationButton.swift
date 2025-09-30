@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import TemplateDesignSystem
 
 public class NotificationButton: UIButton {
     // MARK: Constants

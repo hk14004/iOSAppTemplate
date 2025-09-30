@@ -33,9 +33,7 @@ class StorageAssembly: Assembly {
         container.register(ModelContainer.self) { resolver in
             lazy var container: ModelContainer = {
                 let schema = Schema([
-                  CustomerSD.self,
-                  AccountSD.self,
-                  OfferSD.self
+                  CustomerSD.self
                 ])
 
                 let config = ModelConfiguration(
@@ -54,25 +52,12 @@ class StorageAssembly: Assembly {
               }()
             return container
         }
-
-        container.register((any OfferPersistedLayerInterface).self) { resolver in
-            let container: ModelContainer = Composition.resolve()
-            return DevSwiftDataStore<Offer, OfferConverter>(container: container, converter: OfferConverter(), queue: .main)
-        }
-        .inObjectScope(.container)
         container.register((any CustomerPersistedLayerInterface).self) { resolver in
             let container: ModelContainer = Composition.resolve()
             return DevSwiftDataStore<Customer, CustomerConverter>(container: container, converter: CustomerConverter(), queue: .main)
-        }
-        .inObjectScope(.container)
-        container.register((any AccountPersistedLayerInterface).self) { resolver in
-            let container: ModelContainer = Composition.resolve()
-            return DevSwiftDataStore<Account, AccountConverter>(container: container, converter: AccountConverter(), queue: .main)
         }
         .inObjectScope(.container)
     }
 }
 
 extension DevSwiftDataStore: @retroactive CustomerPersistedLayerInterface where DTO == Customer {}
-extension DevSwiftDataStore: @retroactive OfferPersistedLayerInterface where DTO == Offer {}
-extension DevSwiftDataStore: @retroactive AccountPersistedLayerInterface where DTO == Account {}
