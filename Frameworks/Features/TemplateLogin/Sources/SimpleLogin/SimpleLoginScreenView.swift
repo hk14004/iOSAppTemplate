@@ -3,10 +3,11 @@ import Combine
 
 struct SimpleLoginScreenView<ViewModel: SimpleLoginScreenVM>: View {
     @ObservedObject public var viewModel: ViewModel
+    @ObservedObject var loc = AppLocalizationObserver()
 
     public var body: some View {
         VStack(spacing: 16) {
-            Text("Login")
+            Text(AppStrings.Globals.login)
                 .font(.largeTitle)
                 .padding(.bottom, 20)
 
@@ -61,6 +62,7 @@ struct SimpleLoginScreenView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
+        AppLocalizedPreview(language: "lv")
         SimpleLoginScreenView(viewModel: DummyVM())
     }
 }
