@@ -15,12 +15,7 @@ private func currentFramework() -> Project.Framework {
 let project = Project(
     name: currentFramework().rawValue,
     organizationName: Project.Root.orgName,
-    settings: Settings.settings(
-        configurations: [
-            .debug(name: "Debug"),
-            .release(name: "Release")
-        ]
-    ),
+    settings: Project.makeSettings(),
     targets: [
         .target(
             name: currentFramework().rawValue,

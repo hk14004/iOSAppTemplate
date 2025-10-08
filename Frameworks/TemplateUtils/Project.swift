@@ -15,12 +15,7 @@ enum Constants {
 let project = Project(
     name: Project.Framework.TemplateUtils.rawValue,
     organizationName: Project.Root.orgName,
-    settings: Settings.settings(
-        configurations: [
-            .debug(name: "Debug"),
-            .release(name: "Release")
-        ]
-    ),
+    settings: Project.makeSettings(),
     targets: [
         .target(
             name: Project.Framework.TemplateUtils.rawValue,
@@ -49,6 +44,6 @@ let project = Project(
         )
     ],
     schemes: [
-        Project.appTargetScheme(name: Project.Framework.TemplateEnterprise.getTestTargetName())
+        Project.appTargetScheme(name: Project.Framework.TemplateUtils.getTestTargetName())
     ]
 )

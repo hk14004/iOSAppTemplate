@@ -15,12 +15,7 @@ enum Constants {
 let project = Project(
     name: Project.Framework.TemplateEnterprise.rawValue,
     organizationName: Project.Root.orgName,
-    settings: Settings.settings(
-        configurations: [
-            .debug(name: "Debug"),
-            .release(name: "Release")
-        ]
-    ),
+    settings: Project.makeSettings(),
     targets: [
         .target(
             name: Project.Framework.TemplateEnterprise.rawValue,

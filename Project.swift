@@ -23,12 +23,7 @@ import ProjectDescriptionHelpers
 let project = Project(
     name: Project.Root.name,
     organizationName: Project.Root.orgName,
-    settings: Settings.settings(
-        configurations: [
-            .debug(name: "Debug"),
-            .release(name: "Release")
-        ]
-    ),
+    settings: Project.makeSettings(),
     targets: Project.Root.shared.allTargets,
     schemes: [],
     resourceSynthesizers: [.assets(), .strings()]

@@ -61,4 +61,13 @@ extension Project {
         
         return SettingsDictionary().automaticCodeSigning(devTeam: variant.teamID).currentProjectVersion(makeBuildNumber(isProd: variant.isProductionEnvironment))
     }
+    
+    public static func makeSettings() -> Settings {
+        Settings.settings(
+            configurations: [
+                .debug(name: "Debug", settings: ["SWIFT_ENABLE_EXPLICIT_MODULES": "NO"]),
+                .release(name: "Release", settings: ["SWIFT_ENABLE_EXPLICIT_MODULES": "NO"])
+            ]
+        )
+    }
 }
