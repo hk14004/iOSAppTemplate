@@ -1,5 +1,5 @@
 //
-//  ApplicationFlagRepository.swift
+//  ApplicationActivityRepository.swift
 //  Swedbank
 //
 //  Created by Hardijs Ķirsis on 02/09/2023.

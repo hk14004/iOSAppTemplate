@@ -13,23 +13,11 @@ import DevToolsLocalization
 
 public struct Dependencies {
     let simpleLoginUseCase: SimpleLoginUseCase
-    let getCurrentCustomerUseCase: GetCurrentCustomerUseCase
-    let pinAuthenticateUseCase: PinAuthenticateUseCase
-    let getLastCustomerUseCase: GetLastCustomerUseCase
-    let biometryAuthenticateUseCase: BiometryAuthenticateUseCase
     
     public init(
-        simpleLoginUseCase: SimpleLoginUseCase,
-        getCurrentCustomerUseCase: GetCurrentCustomerUseCase,
-        pinAuthenticateUseCase: PinAuthenticateUseCase,
-        getLastCustomerUseCase: GetLastCustomerUseCase,
-        biometryAuthenticateUseCase: BiometryAuthenticateUseCase
+        simpleLoginUseCase: SimpleLoginUseCase
     ) {
         self.simpleLoginUseCase = simpleLoginUseCase
-        self.getCurrentCustomerUseCase = getCurrentCustomerUseCase
-        self.pinAuthenticateUseCase = pinAuthenticateUseCase
-        self.getLastCustomerUseCase = getLastCustomerUseCase
-        self.biometryAuthenticateUseCase = biometryAuthenticateUseCase
     }
 }
 

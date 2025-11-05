@@ -10,6 +10,7 @@ import Foundation
 import TemplateApplication
 import DevToolsNavigation
 import UIKit
+import TemplateUtils
 
 protocol SimpleLoginScreenRouter: ToErrorRouting {
     func routeToLoginCompleted()
