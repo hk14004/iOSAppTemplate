@@ -8,6 +8,7 @@
 
 import UIKit
 import TemplateDesignSystem
+import TemplateApplication
 
 extension AppDelegate {
     func startup() {

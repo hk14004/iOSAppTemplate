@@ -9,6 +9,7 @@
 import UIKit
 import DevToolsNavigation
 import TemplateLogin
+import TemplateApplication
 
 class DefaultSplashScreenRouter: SplashScreenRouter, UIKitRouter {
     var simpleLoginScreenFactory: any SimpleLoginScreenFactory
@@ -29,6 +30,12 @@ class DefaultSplashScreenRouter: SplashScreenRouter, UIKitRouter {
     
     func routeToOnboarding() {
         print("routeToOnboarding")
+    }
+    
+    func routeToLoggedIn() {
+        let screenFactory: any LoggedInScreenFactory = Composition.resolve()
+        let vc = screenFactory.make(params: .init())
+        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

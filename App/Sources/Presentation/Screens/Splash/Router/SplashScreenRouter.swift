@@ -13,8 +13,5 @@ import TemplateLogin
 
 public protocol SplashScreenRouter: ToErrorRouting, ToSimpleLoginScreenRouting {
     func routeToOnboarding()
-}
-
-public protocol ToSplashScreenRouting {
-    func routeToSplashScreen()
+    func routeToLoggedIn()
 }

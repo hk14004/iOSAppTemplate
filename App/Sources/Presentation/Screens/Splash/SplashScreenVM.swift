@@ -61,14 +61,7 @@ public extension DefaultSplashVM {
         publisher
             .receiveOnMainThread()
             .sink { [weak self] _ in
-                guard
-                    let self = self,
-                    let customer = getCurrentCustomerUseCase.use()
-                else {
-                    return
-                }
-                print(customer)
-                //router?.initRouteToRoot(customer: customer)
+                self?.router?.routeToLoggedIn()
             }
             .store(in: &cancelBag)
         return publisher

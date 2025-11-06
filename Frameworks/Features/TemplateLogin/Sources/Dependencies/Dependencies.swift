@@ -13,11 +13,17 @@ import DevToolsLocalization
 
 public struct Dependencies {
     let simpleLoginUseCase: SimpleLoginUseCase
+    let getCurrentCustomerUseCase: GetCurrentCustomerUseCase
+    let toSplashScreenRouting: ToSplashScreenRouting
     
     public init(
-        simpleLoginUseCase: SimpleLoginUseCase
+        simpleLoginUseCase: SimpleLoginUseCase,
+        getCurrentCustomerUseCase: GetCurrentCustomerUseCase,
+        toSplashScreenRouting: ToSplashScreenRouting
     ) {
         self.simpleLoginUseCase = simpleLoginUseCase
+        self.getCurrentCustomerUseCase = getCurrentCustomerUseCase
+        self.toSplashScreenRouting = toSplashScreenRouting
     }
 }
 
