@@ -13,27 +13,28 @@ class ScreenFactoryAssembly: Assembly {
         container.register(AppDelegate.self) { resolver in
             UIApplication.shared.delegate as! AppDelegate
         }
+        container.register((any AppDelegateRouter).self) { resolver in
+            DefaultAppDelegateRouter()
+        }
         
         container.register(SplashScreenFactory.self) { resolver in
             DefaultSplashScreenFactory()
         }
-        
         container.register((any SimpleLoginScreenFactory).self) { resolver in
             DefaultSimpleLoginScreenFactory(
                 di: Dependencies(
                     simpleLoginUseCase: Composition.resolve(),
                     getCurrentCustomerUseCase: Composition.resolve(),
-                    toSplashScreenRouting: resolver.resolve(AppDelegate.self)!
+                    toSplashScreenRouting: resolver.resolve(AppDelegateRouter.self)!
                 )
             )
         }
-        
         container.register((any LoggedInScreenFactory).self) { resolver in
             DefaultLoggedInScreenFactory(
                 di: Dependencies(
                     simpleLoginUseCase: Composition.resolve(),
                     getCurrentCustomerUseCase: Composition.resolve(),
-                    toSplashScreenRouting: resolver.resolve(AppDelegate.self)!
+                    toSplashScreenRouting: resolver.resolve(AppDelegateRouter.self)!
                 )
             )
         }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// sourcery: AutoMockable, marker=TemplateApplication
 public protocol SaveAppTerminationDateUseCase {
     func use(terminationDate: Date?)
 }

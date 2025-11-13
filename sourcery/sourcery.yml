@@ -1,0 +1,18 @@
+configurations:
+  - sources:
+      - ../App
+      - ../Frameworks
+    templates:
+      - AutoMockableMarked.stencil
+    output:
+      ../App/UnitTests/Mocks/Generated
+    args:
+      autoMockable: true
+      autoMockableImports:
+        - Combine
+      autoMockableTestableImports:
+        - Template
+        - TemplateApplication
+      generateMarkers:
+        - App
+        - TemplateApplication

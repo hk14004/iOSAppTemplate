@@ -14,6 +14,6 @@ extension AppDelegate {
     func startup() {
         registerApplicationLaunch()
         AppAppearance.configureAppearance()
-        routeToSplashScreen()
+        router?.routeToSplashScreen()
     }
 }

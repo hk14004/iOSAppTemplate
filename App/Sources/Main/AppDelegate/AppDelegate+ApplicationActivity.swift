@@ -11,11 +11,11 @@ import TemplateApplication
 
 extension AppDelegate {
     func registerApplicationLaunch() {
-        let saveAppLaunchDateUseCase: SaveAppLaunchDateUseCase = Composition.resolve()
+        let saveAppLaunchDateUseCase = container.resolve(SaveAppLaunchDateUseCase.self)!
         saveAppLaunchDateUseCase.use(launchDate: Date())
     }
     func registerApplicationTermination() {
-        let saveAppTerminationDateUseCase: SaveAppTerminationDateUseCase = Composition.resolve()
+        let saveAppTerminationDateUseCase = container.resolve(SaveAppTerminationDateUseCase.self)!
         saveAppTerminationDateUseCase.use(terminationDate: Date())
     }
 }

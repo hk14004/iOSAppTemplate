@@ -10,7 +10,9 @@ import TemplateApplication
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Properties
-    lazy var window: UIWindow? = Composition.resolve()
+    lazy var container = Composition.shared.container
+    lazy var window: UIWindow? = container.resolve(UIWindow.self)
+    lazy var router = container.resolve(AppDelegateRouter.self)
     
     // MARK: - LifeCycle
     func application(

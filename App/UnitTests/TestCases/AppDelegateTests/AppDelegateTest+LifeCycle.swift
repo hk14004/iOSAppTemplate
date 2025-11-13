@@ -4,41 +4,33 @@ import XCTest
 extension AppDelegateTests {
     func testAppLaunch_didRegisterStartup() {
         // Arrange
-//        let sut = makeSUT()
-//        let didCallRegisterStartupDate = expectation(description: "didCallRegisterStartupDate")
-//        let expectedDate = Date()
-//        var actualDate: Date!
-//        mocks.mockSaveAppLaunchDateUseCase.useCalledSpy = { date in
-//            actualDate = date
-//            didCallRegisterStartupDate.fulfill()
-//        }
-//        
-//        // Act
-//        let _ = sut.application(UIApplication.shared, didFinishLaunchingWithOptions: [:])
-//        
-//        // Assert
-//        waitForExpectations(timeout: defaultTimeout)
-//        let distance = expectedDate.distance(to: actualDate)
-//        XCTAssertTrue(distance < 1)
+        let expectedDate = Date()
+
+        // Act
+        let _ = sut.application(UIApplication.shared, didFinishLaunchingWithOptions: [:])
+        
+        // Assert
+        let distance = expectedDate.distance(to: saveAppLaunchDateUseCaseMock.useLaunchDateDateVoidReceivedLaunchDate!)
+        XCTAssertTrue(distance < 1)
     }
     
     func testAppTerminate_didRegisterTermination() {
         // Arrange
-//        let sut = makeSUT()
-//        let didCallRegisterTerminationDate = expectation(description: "didCallRegisterTerminationDate")
-//        let expectedDate = Date()
-//        var actualDate: Date!
-//        mocks.mockSaveAppTerminationDateUseCase.useCalledSpy = { date in
-//            actualDate = date
-//            didCallRegisterTerminationDate.fulfill()
-//        }
-//        
-//        // Act
-//        sut.applicationWillTerminate(UIApplication.shared)
-//        
-//        // Assert
-//        waitForExpectations(timeout: defaultTimeout)
-//        let distance = expectedDate.distance(to: actualDate)
-//        XCTAssertTrue(distance < 1)
+        let expectedDate = Date()
+        
+        // Act
+        sut.applicationWillTerminate(UIApplication.shared)
+        
+        // Assert
+        let distance = expectedDate.distance(to: saveAppTerminationDateUseCaseMock.useTerminationDateDateVoidReceivedTerminationDate!)
+        XCTAssertTrue(distance < 1)
+    }
+    
+    func testAppLaunch_didCallRouteToSplash() {
+        // Act
+        let _ = sut.application(UIApplication.shared, didFinishLaunchingWithOptions: [:])
+        
+        // Assert
+        XCTAssertTrue(appDelegateRouter.routeToSplashScreenVoidCalled)
     }
 }
