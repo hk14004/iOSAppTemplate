@@ -11,6 +11,7 @@ import TemplateApplication
 import DevToolsNavigation
 import TemplateLogin
 
+// sourcery: AutoMockable, marker=App
 public protocol SplashScreenRouter: ToErrorRouting, ToSimpleLoginScreenRouting {
     func routeToOnboarding()
     func routeToLoggedIn()

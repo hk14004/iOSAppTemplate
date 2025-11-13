@@ -2,6 +2,7 @@ configurations:
   - sources:
       - ../App
       - ../Frameworks
+      - ../Tuist/.build/checkouts/DevTools-Swift/Sources
     templates:
       - AutoMockableMarked.stencil
     output:
@@ -13,6 +14,7 @@ configurations:
       autoMockableTestableImports:
         - Template
         - TemplateApplication
+        - TemplateLogin
       generateMarkers:
         - App
         - TemplateApplication

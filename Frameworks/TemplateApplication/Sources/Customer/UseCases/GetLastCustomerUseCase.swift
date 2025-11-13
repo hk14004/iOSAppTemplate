@@ -8,6 +8,7 @@
 
 import Combine
 
+// sourcery: AutoMockable, marker=App
 public protocol GetLastCustomerUseCase {
     func use() -> Customer?
 }

@@ -49,8 +49,7 @@ public extension DefaultSplashVM {
             )
             return
         }
-        print(customer)
-        //router?.initRouteToRoot(customer: customer)
+        router?.routeToLoggedIn()
     }
 }
 

@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 
+// sourcery: AutoMockable, marker=App
 public protocol GetCurrentCustomerUseCase {
     func use() -> Customer?
 }
