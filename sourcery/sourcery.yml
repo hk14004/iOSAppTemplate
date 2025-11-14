@@ -18,3 +18,17 @@ configurations:
       generateMarkers:
         - App
         - TemplateApplication
+  - sources:
+    - ../Frameworks/TemplateApplication
+    templates:
+    - AutoMockableMarked.stencil
+    output:
+      ../Frameworks/TemplateApplication/Tests/Mocks/Generated
+    args:
+      autoMockable: true
+      autoMockableImports:
+        - Combine
+      autoMockableTestableImports:
+        - TemplateApplication
+      generateMarkers:
+        - TemplateApplication

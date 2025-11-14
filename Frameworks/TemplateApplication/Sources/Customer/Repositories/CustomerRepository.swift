@@ -8,6 +8,7 @@
 
 import Combine
 
+// sourcery: AutoMockable, marker=TemplateApplication
 public protocol CustomerRepository {
     func replace(with items: [Customer]) -> AnyPublisher<Void, Never>
     func addOrUpdate(_ items: [Customer]) -> AnyPublisher<Void, Never>

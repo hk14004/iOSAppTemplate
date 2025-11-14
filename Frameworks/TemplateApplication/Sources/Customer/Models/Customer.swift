@@ -48,21 +48,3 @@ public extension Customer {
         return words.map { $0.first?.uppercased() ?? "" }.joined()
     }
 }
-
-public enum CustomerType: String, Codable {
-    case `private`
-    case business
-    case child
-}
-
-public enum CustomerRole: String, Codable {
-    case `private`
-    case business
-    case parent
-}
-
-public enum CustomerAuthority: String, Codable {
-    case cards
-    case payments
-    case statements
-}

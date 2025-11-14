@@ -10,22 +10,23 @@ import XCTest
 @testable import TemplateApplication
 
 final class GetCompletedOnboardingUseCaseTests: XCTestCase {
-    let mocks = Mocks()
+    let userJourneyRepository = UserJourneyRepositoryMock()
+    lazy var sut = makeSUT()
     
-    func testUse() {
+    func makeSUT() -> DefaultIsOnboardingCompletedUseCase {
+        DefaultIsOnboardingCompletedUseCase(
+            userJourneyRepository: userJourneyRepository
+        )
+    }
+    
+    func testUseReturnsTrue() {
         // Arrange
-        let sut = makeSUT()
-        let expectGetOnboardingCalled = expectation(description: "expectGetOnboardingCalled")
-        mocks.mockUserJourneyRepository.getCompletedOnboardingMock = true
-        mocks.mockUserJourneyRepository.getCompletedOnboardingCalledSpy = {
-            expectGetOnboardingCalled.fulfill()
-        }
+        userJourneyRepository.getIsOnboardingCompletedBoolReturnValue = true
         
         // Act
         let result = sut.use()
         
         // Assert
-        waitForExpectations(timeout: defaultTimeout)
         XCTAssertTrue(result)
     }
 }

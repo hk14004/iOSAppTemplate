@@ -1,5 +1,5 @@
 //
-//  ApplicationFlagRepository.swift
+//  UserJourneyRepository.swift
 //  Swedbank
 //
 //  Created by Hardijs Ķirsis on 02/09/2023.
@@ -8,6 +8,7 @@
 
 import Foundation
 
+// sourcery: AutoMockable, marker=TemplateApplication
 public protocol UserJourneyRepository {
     func update(completedOnboarding: Bool)
     func getIsOnboardingCompleted() -> Bool

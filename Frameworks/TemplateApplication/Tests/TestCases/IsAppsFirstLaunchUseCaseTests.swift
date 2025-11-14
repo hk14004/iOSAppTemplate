@@ -10,21 +10,23 @@ import XCTest
 @testable import TemplateApplication
 
 final class IsAppsFirstLaunchUseCaseTests: XCTestCase {
-    let mocks = Mocks()
     
-    func testUse() {
+    let applicationActivityRepository = ApplicationActivityRepositoryMock()
+    lazy var sut = makeSUT()
+    
+    func makeSUT() -> DefaultIsAppsFirstLaunchUseCase {
+        DefaultIsAppsFirstLaunchUseCase(
+            applicationActivityRepository: applicationActivityRepository
+        )
+    }
+    func testUseReturnsTrue() {
         // Arrange
-        let sut = makeSUT()
-        let expectGetCalled = expectation(description: "expectGetCalled")
-        mocks.mockApplicationActivityRepository.getTerminationDateMock = nil
-        mocks.mockApplicationActivityRepository.getTerminationDateCalledSpy = {
-            expectGetCalled.fulfill()
-        }
+        applicationActivityRepository.getTerminationDateDateReturnValue = nil
+        
         // Act
         let result = sut.use()
         
         // Assert
-        waitForExpectations(timeout: defaultTimeout)
         XCTAssertTrue(result)
     }
 }

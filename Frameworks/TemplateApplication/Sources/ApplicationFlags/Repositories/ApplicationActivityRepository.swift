@@ -8,6 +8,7 @@
 
 import Foundation
 
+// sourcery: AutoMockable, marker=TemplateApplication
 public protocol ApplicationActivityRepository {
     func getLaunchDate() -> Date?
     func saveLaunchDate(date: Date?)
