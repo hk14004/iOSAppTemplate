@@ -19,5 +19,6 @@ public extension Project {
         case DevToolsNetworking
         case DevToolsPersistance
         case DevToolsLocalization
+        case DevToolsXCTest
     }
 }

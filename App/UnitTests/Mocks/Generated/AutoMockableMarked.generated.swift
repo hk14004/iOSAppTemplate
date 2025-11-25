@@ -540,3 +540,69 @@ public class UserJourneyRepositoryMock: UserJourneyRepository {
 
 }
 
+
+public class UserSessionCredentialsRepositoryMock: UserSessionCredentialsRepository {
+
+    public init() {}
+
+
+
+    //MARK: - save
+
+    public var saveCredentialsUserSessionCredentialsVoidCallsCount = 0
+    public var saveCredentialsUserSessionCredentialsVoidCalled: Bool {
+        return saveCredentialsUserSessionCredentialsVoidCallsCount > 0
+    }
+    public var saveCredentialsUserSessionCredentialsVoidReceivedCredentials: (UserSessionCredentials)?
+    public var saveCredentialsUserSessionCredentialsVoidReceivedInvocations: [(UserSessionCredentials)] = []
+    public var saveCredentialsUserSessionCredentialsVoidClosure: ((UserSessionCredentials) -> Void)?
+
+    public func save(credentials: UserSessionCredentials) {
+        saveCredentialsUserSessionCredentialsVoidCallsCount += 1
+        saveCredentialsUserSessionCredentialsVoidReceivedCredentials = credentials
+        saveCredentialsUserSessionCredentialsVoidReceivedInvocations.append(credentials)
+        saveCredentialsUserSessionCredentialsVoidClosure?(credentials)
+    }
+
+    //MARK: - getCredentials
+
+    public var getCredentialsIdStringUserSessionCredentialsCallsCount = 0
+    public var getCredentialsIdStringUserSessionCredentialsCalled: Bool {
+        return getCredentialsIdStringUserSessionCredentialsCallsCount > 0
+    }
+    public var getCredentialsIdStringUserSessionCredentialsReceivedId: (String)?
+    public var getCredentialsIdStringUserSessionCredentialsReceivedInvocations: [(String)] = []
+    public var getCredentialsIdStringUserSessionCredentialsReturnValue: UserSessionCredentials?
+    public var getCredentialsIdStringUserSessionCredentialsClosure: ((String) -> UserSessionCredentials?)?
+
+    public func getCredentials(id: String) -> UserSessionCredentials? {
+        getCredentialsIdStringUserSessionCredentialsCallsCount += 1
+        getCredentialsIdStringUserSessionCredentialsReceivedId = id
+        getCredentialsIdStringUserSessionCredentialsReceivedInvocations.append(id)
+        if let getCredentialsIdStringUserSessionCredentialsClosure = getCredentialsIdStringUserSessionCredentialsClosure {
+            return getCredentialsIdStringUserSessionCredentialsClosure(id)
+        } else {
+            return getCredentialsIdStringUserSessionCredentialsReturnValue
+        }
+    }
+
+    //MARK: - deleteCredentials
+
+    public var deleteCredentialsIdStringVoidCallsCount = 0
+    public var deleteCredentialsIdStringVoidCalled: Bool {
+        return deleteCredentialsIdStringVoidCallsCount > 0
+    }
+    public var deleteCredentialsIdStringVoidReceivedId: (String)?
+    public var deleteCredentialsIdStringVoidReceivedInvocations: [(String)] = []
+    public var deleteCredentialsIdStringVoidClosure: ((String) -> Void)?
+
+    public func deleteCredentials(id: String) {
+        deleteCredentialsIdStringVoidCallsCount += 1
+        deleteCredentialsIdStringVoidReceivedId = id
+        deleteCredentialsIdStringVoidReceivedInvocations.append(id)
+        deleteCredentialsIdStringVoidClosure?(id)
+    }
+
+
+}
+

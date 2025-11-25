@@ -8,6 +8,7 @@
 
 import Foundation
 
+// sourcery: AutoMockable, marker=TemplateApplication
 public protocol UserSessionCredentialsRepository {
     func save(credentials: UserSessionCredentials)
     func getCredentials(id: String) -> UserSessionCredentials?

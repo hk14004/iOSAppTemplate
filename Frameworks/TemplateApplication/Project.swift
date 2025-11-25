@@ -40,7 +40,8 @@ let project = Project(
             sources: ["Tests/**"],
             dependencies: [
                 .target(name: currentFramework().rawValue),
-                .external(name: Project.Dependencies.DevToolsCore.rawValue)
+                .external(name: Project.Dependencies.DevToolsCore.rawValue),
+                .external(name: Project.Dependencies.DevToolsXCTest.rawValue),
             ]
         )
     ],
