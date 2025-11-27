@@ -10,7 +10,7 @@ import Combine
 
 // sourcery: AutoMockable, marker=TemplateApplication
 public protocol CustomerRepository {
-    func replace(with items: [Customer]) -> AnyPublisher<Void, Never>
+    func replace(with items: [Customer]) -> AnyPublisher<Void, Error>
     func addOrUpdate(_ items: [Customer]) -> AnyPublisher<Void, Never>
     func getSingle(id: String) -> AnyPublisher<Customer?, Never>
     func getSingle(id: String) -> Customer?

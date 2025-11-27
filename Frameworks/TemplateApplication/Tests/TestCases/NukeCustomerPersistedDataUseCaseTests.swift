@@ -24,8 +24,22 @@ final class NukeCustomerPersistedDataUseCaseTests: XCTestCase {
     
     func testUseSucceeds() throws {
         // Arrange
-        customerRepository.replaceWithItemsCustomerAnyPublisherVoidNeverReturnValue = .just(Void())
+        customerRepository.replaceWithItemsCustomerAnyPublisherVoidErrorReturnValue = .just(Void())
         // Act
-        try awaitPublisher(sut.use(customerId: ""))
+        let result: Void? = try awaitPublisher(sut.use(customerId: ""))?.get()
+        
+        // Assert
+        try XCTUnwrap(result)
+    }
+    
+    func testUseFails() throws {
+        // Arrange
+        customerRepository.replaceWithItemsCustomerAnyPublisherVoidErrorReturnValue = .fail(mockedError)
+        
+        // Act
+        let result = awaitPublisher(sut.use(customerId: ""))
+        
+        // Assert
+        XCTAssertEqual(mockedError, result?.error as? MockError)
     }
 }

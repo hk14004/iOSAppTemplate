@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 public protocol NukeCustomerPersistedDataUseCase {
-    func use(customerId: String) -> AnyPublisher<Void, Never>
+    func use(customerId: String) -> AnyPublisher<Void, Error>
 }
 
 public struct DefaultNukeCustomerPersistedDataUseCase: NukeCustomerPersistedDataUseCase {
@@ -25,7 +25,7 @@ public struct DefaultNukeCustomerPersistedDataUseCase: NukeCustomerPersistedData
         self.userSessionCredentialsRepository = userSessionCredentialsRepository
     }
     
-    public func use(customerId: String) -> AnyPublisher<Void, Never> {
+    public func use(customerId: String) -> AnyPublisher<Void, Error> {
         customerRepository.replace(with: [])
             .map { _ in
                 userSessionCredentialsRepository.deleteCredentials(id: customerId)

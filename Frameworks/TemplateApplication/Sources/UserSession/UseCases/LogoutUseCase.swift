@@ -33,5 +33,7 @@ public class DefaultLogoutUseCase: LogoutUseCase {
         }
         customerRepository.setCurrentCustomer(nil)
         return nukeCustomerPersistedDataUseCase.use(customerId: loggedInCustomer.id)
+            .replaceError(with: ())
+            .eraseToAnyPublisher()
     }
 }

@@ -33,7 +33,7 @@ public class DefaultCustomerRepository: CustomerRepository {
     
     public func getRemoteCustomers() -> AnyPublisher<[Customer], Error> {
         fetchRemoteCustomersService.use()
-            .flatMap { [weak self] customers -> AnyPublisher<[Customer], Never> in
+            .flatMap { [weak self] customers -> AnyPublisher<[Customer], Error> in
                 self?.replace(with: customers)
                     .map { _ in customers }
                     .eraseToAnyPublisher() ?? .empty()
@@ -65,8 +65,8 @@ public class DefaultCustomerRepository: CustomerRepository {
         try? localStore.getSingle(id: id)
     }
     
-    public func replace(with items: [Customer]) -> AnyPublisher<Void, Never> {
-        Future<Void, Never> { [weak self] promise in
+    public func replace(with items: [Customer]) -> AnyPublisher<Void, Error> {
+        Future<Void, Error> { [weak self] promise in
             Task {
                 try await self?.localStore.replace(with: items)
                 promise(.success(()))

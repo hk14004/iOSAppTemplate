@@ -126,23 +126,23 @@ public class CustomerRepositoryMock: CustomerRepository {
 
     //MARK: - replace
 
-    public var replaceWithItemsCustomerAnyPublisherVoidNeverCallsCount = 0
-    public var replaceWithItemsCustomerAnyPublisherVoidNeverCalled: Bool {
-        return replaceWithItemsCustomerAnyPublisherVoidNeverCallsCount > 0
+    public var replaceWithItemsCustomerAnyPublisherVoidErrorCallsCount = 0
+    public var replaceWithItemsCustomerAnyPublisherVoidErrorCalled: Bool {
+        return replaceWithItemsCustomerAnyPublisherVoidErrorCallsCount > 0
     }
-    public var replaceWithItemsCustomerAnyPublisherVoidNeverReceivedItems: ([Customer])?
-    public var replaceWithItemsCustomerAnyPublisherVoidNeverReceivedInvocations: [([Customer])] = []
-    public var replaceWithItemsCustomerAnyPublisherVoidNeverReturnValue: AnyPublisher<Void, Never>!
-    public var replaceWithItemsCustomerAnyPublisherVoidNeverClosure: (([Customer]) -> AnyPublisher<Void, Never>)?
+    public var replaceWithItemsCustomerAnyPublisherVoidErrorReceivedItems: ([Customer])?
+    public var replaceWithItemsCustomerAnyPublisherVoidErrorReceivedInvocations: [([Customer])] = []
+    public var replaceWithItemsCustomerAnyPublisherVoidErrorReturnValue: AnyPublisher<Void, Error>!
+    public var replaceWithItemsCustomerAnyPublisherVoidErrorClosure: (([Customer]) -> AnyPublisher<Void, Error>)?
 
-    public func replace(with items: [Customer]) -> AnyPublisher<Void, Never> {
-        replaceWithItemsCustomerAnyPublisherVoidNeverCallsCount += 1
-        replaceWithItemsCustomerAnyPublisherVoidNeverReceivedItems = items
-        replaceWithItemsCustomerAnyPublisherVoidNeverReceivedInvocations.append(items)
-        if let replaceWithItemsCustomerAnyPublisherVoidNeverClosure = replaceWithItemsCustomerAnyPublisherVoidNeverClosure {
-            return replaceWithItemsCustomerAnyPublisherVoidNeverClosure(items)
+    public func replace(with items: [Customer]) -> AnyPublisher<Void, Error> {
+        replaceWithItemsCustomerAnyPublisherVoidErrorCallsCount += 1
+        replaceWithItemsCustomerAnyPublisherVoidErrorReceivedItems = items
+        replaceWithItemsCustomerAnyPublisherVoidErrorReceivedInvocations.append(items)
+        if let replaceWithItemsCustomerAnyPublisherVoidErrorClosure = replaceWithItemsCustomerAnyPublisherVoidErrorClosure {
+            return replaceWithItemsCustomerAnyPublisherVoidErrorClosure(items)
         } else {
-            return replaceWithItemsCustomerAnyPublisherVoidNeverReturnValue
+            return replaceWithItemsCustomerAnyPublisherVoidErrorReturnValue
         }
     }
 
